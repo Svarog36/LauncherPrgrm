@@ -34,6 +34,9 @@ public class Main extends Application {
         launch(args);
     }
 
-
+// todo add this to vm-options
+    /*
+    --module-path "B:\Programmieren\javafx-sdk-15.0.1\lib" --add-modules javafx.fxml,javafx.controls
+     */
 
 }
