@@ -18,19 +18,19 @@ public class FxmlController {
     private String usrInput;
     private String[] searchResultInArray;
     private int index = -1;
-    private boolean newPath = false, skip = false;
+    private boolean twoFactorInNewPath = false, skip = false, twoFactorInShutdown = false;
 
 
     public void initialize() {
 
-        result.setText("type \"newpath\" to change directory containing shortcuts");
+        result.setText("type \"help\" to view all commands");
 
     }
 
     @FXML
     public void update() {
 
-        if (newPath || skip) {
+        if (twoFactorInNewPath || skip || twoFactorInShutdown) {
             skip = false;
             return;
         }
@@ -105,11 +105,11 @@ public class FxmlController {
 
                 input.setText("");
                 result.setText("Enter new path value");
-                newPath = true;
+                twoFactorInNewPath = true;
 
-            } else if (newPath) {
+            } else if (twoFactorInNewPath) {
 
-                newPath = false;
+                twoFactorInNewPath = false;
 
                 FileIO.writeToFile(Main.propertiesLocation, input.getText());
 
@@ -130,6 +130,38 @@ public class FxmlController {
 
                 runProgram("shutdown -s -t 0");
 
+            } else if(input.getText().equals("shutdownTimer")){
+
+                input.setText("");
+                result.setText("Enter seconds to shutdown");
+                twoFactorInShutdown = true;
+
+            }else if(twoFactorInShutdown){
+
+                twoFactorInShutdown = false;
+
+                result.setText("shutdown in " + input.getText() + "sec");
+                input.setText("");
+
+                runProgram("shutdown -s -t " + input.getText());
+
+            }else if (input.getText().equals("undoShutdown")){
+
+                input.setText("");
+                result.setText("shutdown canceled");
+
+                skip = true;
+
+                runProgram("shutdown -a");
+
+            }else if (input.getText().equals("help")) {
+
+                skip = true;
+                input.setText("");
+
+                result.setText("Commands:\n \"newpath\" : change or set directory containing shortcuts \n \"shutdown\" : turn off pc immediately\n \"shutdownTimer\" : turn off pc after delay \n \"undoShutdown\" : undo shutdown command");
+
+
             } else {
 
 
@@ -146,9 +178,8 @@ public class FxmlController {
                 executeShortcut(searchResultInArray[0]);
 
             }
-
-
         }
+
 
     }
 

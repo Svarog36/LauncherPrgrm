@@ -13,7 +13,7 @@ public class FileBrowser {
 
         for (File file : Objects.requireNonNull(curDir.listFiles())) {
 
-            if (!file.isDirectory() && file.getName().substring(0, file.getName().indexOf(".")).toLowerCase().contains(stringToMatch)) {
+            if (!file.isDirectory() && file.getName().substring(0, file.getName().indexOf(".")).toLowerCase().contains(stringToMatch.toLowerCase())) {
                 contents.append(file.getName()).append("\n");
             }
 

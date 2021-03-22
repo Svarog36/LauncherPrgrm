@@ -26,6 +26,8 @@ public class Main extends Application {
         primaryStage.show();
 
 
+
+
         folderWithShortcuts = FileIO.loadProperties();
     }
 
@@ -38,5 +40,8 @@ public class Main extends Application {
     /*
     --module-path "B:\Programmieren\javafx-sdk-15.0.1\lib" --add-modules javafx.fxml,javafx.controls
      */
+
+
+    
 
 }
