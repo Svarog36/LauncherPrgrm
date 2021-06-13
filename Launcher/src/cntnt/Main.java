@@ -46,7 +46,16 @@ public class Main extends Application {
     }
 
 
+    /*
 
+    if Error: JavaFX runtime components are missing, and are required to run this application
+
+    add this to VM Options in Run/Debug Configurations
+
+    --module-path "PATH_TO\javafx-sdk-15.0.1\lib" --add-modules javafx.fxml,javafx.controls
+
+    example: --module-path "B:\Programmieren\javafx-sdk-15.0.1\lib" --add-modules javafx.fxml,javafx.controls
+     */
     
 
 }
