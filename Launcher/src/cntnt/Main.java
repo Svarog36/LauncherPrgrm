@@ -10,6 +10,15 @@ import java.io.IOException;
 
 public class Main extends Application {
 
+
+    /**
+     * Das Programm listet alle Shortcut- und .lnk-Dateien auf, die in sich in dem unter Properties.txt angegebenen Ordner befinden.
+     * Wenn in das obere Eingabefeld der Name eines Shortcut/Links eingegeben wird und Enter gedrückt wird,
+     * wird das Programm gestertet/der Link ausgeführt
+     */
+
+
+
     public static String folderWithShortcuts, propertiesLocation = "./Properties";
 
 
@@ -36,10 +45,6 @@ public class Main extends Application {
         launch(args);
     }
 
-// todo add this to vm-options
-    /*
-    --module-path "B:\Programmieren\javafx-sdk-15.0.1\lib" --add-modules javafx.fxml,javafx.controls
-     */
 
 
     
